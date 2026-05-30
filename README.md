@@ -191,7 +191,7 @@ All rights reserved © FOODY Team.
 
 > Add your team members here.
 
-- **Abidi Rayen** — [@your-github]([https://github.com/your-github](https://github.com/rayen-abidi05))
+- **Abidi Rayen** — [@rayen-abidi05]([https://github.com/your-github](https://github.com/rayen-abidi05))
 
 ---
 
