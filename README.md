@@ -189,7 +189,7 @@ All rights reserved © FOODY Team.
 
 ## 👨‍💻 Authors
 
-> Add your team members here.
+
 
 - **Abidi Rayen** — [@rayen-abidi05]([https://github.com/your-github](https://github.com/rayen-abidi05))
 
