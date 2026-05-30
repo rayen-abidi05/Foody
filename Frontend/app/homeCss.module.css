@@ -1,0 +1,307 @@
+.section_main{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+.myimage {
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.myimage::before {
+  content: "";
+  position: absolute;
+  background: rgb(255, 200, 50);
+  border-radius: 50%;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 360%);
+  width: 600px;
+  height: 100px;
+  z-index: -1;
+  filter: blur(40px);
+  opacity: 0.6;
+}
+.navbar {
+    background-color: #2A1505;
+    
+    width: 100%;
+    z-index: 10 ;
+ 
+   
+    box-shadow: 0 10px 15px -5px rgba(240, 169, 81, 0.1);
+    animation: fadeIn 2s ease-in;
+    animation: scaleYPop 0.75s ease-out;
+    transform-origin: top;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes scaleYPop {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.scrollbar::-webkit-scrollbar {
+    display: none;
+
+}
+.scrollbar{
+    display: flex;
+    
+    width: 100%;
+    overflow: hidden;
+    scrollbar-width: none; 
+}
+.group{
+    display: flex;
+    gap: 2rem;
+    width: 200%;
+    animation: spin 20s linear infinite;
+    padding-right: 2rem;
+}
+.scrollimage{
+    flex: 0 0 auto;
+    border-radius: 30px;
+    animation: rotation 30s linear infinite;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(3deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    75%{
+        transform: rotate(-3deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+.cardh {
+    background-color: #0F2E1A;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+
+.cardh::before {
+    content: "";
+    position: absolute;
+    background: rgb(8, 56, 2);
+    filter: blur(60px);
+    width: 50%;
+    height: 50%;
+    left: -20px;
+    top: -20px;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+
+.cardh::after {
+    content: "";
+    position: absolute;
+    background: rgb(8, 56, 2);
+    filter: blur(100px);
+    width: 70%;
+    height: 70%;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.cardh > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+.cardn {
+    background-color:#2E1A08;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+
+.cardn::before {
+    content: "";
+    position: absolute;
+    background: #502b0b;
+    filter: blur(60px);
+    width: 50%;
+    height: 50%;
+    left: -20px;
+    top: -20px;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+
+.cardn::after {
+    content: "";
+    position: absolute;
+    background: #502b0b;    
+    filter: blur(100px);
+    width: 70%;
+    height: 70%;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    z-index: 0; 
+}
+
+.cardn > * {
+    position: relative;
+    z-index: 1;
+}
+.cardh:hover{
+    filter: drop-shadow(10px 0px 30px rgba(0,0,0,0.5) );
+    background-image: url('/images/healthy.jpg');   
+    opacity: 0.5;  
+}
+
+ .cardn:hover {
+    filter: drop-shadow(10px 0px 30px rgba(0,0,0,0.5) );
+    background-image: url('/images/normal.jpg');   
+    opacity: 0.5;   
+    
+}
+
+.cardh:hover .content,
+.cardn:hover .content {
+    opacity: 0;
+}
+.cardh:hover::before ,.cardh:hover::after, .cardn:hover::before, .cardn:hover::after {
+    display: none;
+}
+
+
+.footer{
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    justify-content: space-between;
+    position: relative;
+    margin-top :2rem   
+    
+}
+
+.footer::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    opacity: 0.5;
+    top:-10;
+    
+     
+}
+.section_main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.section {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.3s ease;
+  margin-bottom: 1rem;
+}
+.section > div {
+  width: 100%;
+}
+.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 720px) {
+  
+    .navbarLinks{
+        display: none;
+        position: relative;
+    }
+    .navbar{
+        display : flex;
+        justify-content: end;
+        gap : 4rem
+    }
+  
+    
+    .myimage{
+        width: 100%;
+        height: 100%;
+        
+    }
+    .myimage::before {
+    content: "";
+    position: absolute;
+    background: rgb(255, 200, 50);
+    border-radius: 50%;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 360%);
+    width: 100%;
+    height: 100px;
+    z-index: -1;
+    filter: blur(40px);
+    opacity: 0.6;
+    }
+    
+}
+
+
+
+.open{
+    display: block;
+    width: 100%;
+}
+.close{
+    display: none;
+}

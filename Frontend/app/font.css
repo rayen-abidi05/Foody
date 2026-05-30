@@ -1,0 +1,19 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --font-oswald: 'Oswald', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
+/* Usage */
+h1, h2, h3 {
+  font-family: var(--font-oswald);
+  font-weight: 600;
+  letter-spacing: 0.5px; /* Tighten for impact */
+}
+
+body, p, button, input {
+  font-family: var(--font-roboto);
+  font-weight: 400;
+}

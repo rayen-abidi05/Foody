@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zesty Lemon Garlic Salmon | Foody</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #2C1810;
+            --primary-brown: #4A2C17;
+            --accent-gold: #F4D03F;
+            --accent-gold-hover: #E5C135;
+            --text-dark: #1A1A1A;
+            --text-light: #666;
+            --bg-cream: #FAF8F5;
+            --bg-white: #FFFFFF;
+            --border-light: #E8E4DF;
+            --success-green: #059669;
+            
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation - Matching Homepage Dark Theme */
+        nav {
+            background: linear-gradient(180deg, #1A0F0A 0%, var(--primary-dark) 100%);
+            padding: 1.2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🍃";
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-gold);
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            border: none;
+        }
+
+        .btn-signin {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-signin:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        .btn-login {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #047857;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - Dark to Light Transition */
+        .recipe-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brown) 50%, #6B4423 100%);
+            padding: 4rem 5% 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            align-items: center;
+        }
+
+        .recipe-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: white;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Main Content Container - Light Theme from Photoshop */
+        .main-container {
+            max-width: 1400px;
+            margin: -3rem auto 0;
+            padding: 0 5% 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-wrapper {
+            background: var(--bg-white);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Hero Image Section */
+        .hero-image-section {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-image-section:hover .hero-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        }
+
+        /* Content Grid */
+        .recipe-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+            padding: 3rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .process-card {
+            background: var(--bg-cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent-gold);
+        }
+
+        .process-number {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(244, 208, 63, 0.3);
+        }
+
+        .process-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .process-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .process-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Ingredients Section */
+        .ingredients-section {
+            background: linear-gradient(135deg, #F9F7F4 0%, #F5F2ED 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .ingredient-item {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .ingredient-item:hover {
+            transform: scale(1.05);
+        }
+
+        .ingredient-img {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid var(--border-light);
+        }
+
+        .ingredient-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .ingredient-amount {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Sidebar - Macro Profile */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .macro-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brown) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            box-shadow: 0 10px 40px rgba(44, 24, 16, 0.2);
+        }
+
+        .macro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .macro-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .macro-item:last-child {
+            border-bottom: none;
+        }
+
+        .macro-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .macro-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .macro-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .macro-fill {
+            height: 100%;
+            background: var(--accent-gold);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .calorie-highlight {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calorie-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .calorie-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(244, 208, 63, 0.3);
+        }
+
+        .btn-secondary {
+            width: 50px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Detailed Instructions */
+        .instructions-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border-light);
+        }
+
+        .instruction-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-cream);
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-gold);
+            transition: all 0.3s;
+        }
+
+        .instruction-step:hover {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CC 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(244, 208, 63, 0.3);
+        }
+
+        .tips-title {
+            color: var(--primary-brown);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            color: var(--text-light);
+        }
+
+        .tips-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .recipe-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .recipe-meta {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .process-card, .ingredient-item, .instruction-step {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .process-card:nth-child(2) { animation-delay: 0.1s; }
+        .process-card:nth-child(3) { animation-delay: 0.2s; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation - Matches Homepage -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Foody</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active">Recipes</a></li>
+                <li><a href="#">About us</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-nav btn-signin">Sign in</button>
+                <button class="btn-nav btn-login">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Dark Theme Continuation -->
+    <section class="recipe-hero">
+        <div class="hero-content">
+            <div class="recipe-meta">
+                <span class="badge">Dinner</span>
+                <span>⏱ 25 mins</span>
+                <span>👨‍🍳 Easy</span>
+                <span>🔥 410 kcal</span>
+            </div>
+            <h1>Zesty Lemon Garlic Salmon</h1>
+            <p class="hero-subtitle">A restaurant-quality dish featuring perfectly seared salmon fillets bathed in a buttery lemon-garlic sauce, served with roasted asparagus and sweet cherry tomatoes.</p>
+        </div>
+    </section>
+
+    <!-- Main Content - Light Theme -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            
+            <!-- Hero Image -->
+            <div class="hero-image-section">
+                <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/1798dd63dc0dc7a050e75e2faa5086807e3f9882.jpg" alt="Zesty Lemon Garlic Salmon" class="hero-image">
+                <div class="image-overlay"></div>
+            </div>
+
+            <div class="recipe-content">
+                <div class="main-column">
+                    <!-- Process Overview -->
+                    <section class="process-section">
+                        <h2 class="section-title">⚡ The Process</h2>
+                        <div class="process-grid">
+                            <div class="process-card">
+                                <div class="process-number">1</div>
+                                <span class="process-icon">🥩</span>
+                                <h3 class="process-title">PREP</h3>
+                                <p class="process-desc">Pat salmon dry. Season generously with salt and pepper. Mince garlic finely.</p>
+                            </div>
+                            <div class="process-card">
+                                <div class="process-number">2</div>
+                                <span class="process-icon">🔥</span>
+                                <h3 class="process-title">SEAR</h3>
+                                <p class="process-desc">Heat olive oil in a skillet over medium-high heat. Add salmon, skin-side up, and cook for 4 minutes until golden.</p>
+                            </div>
+                            <div class="process-card">
+                                <div class="process-number">3</div>
+                                <span class="process-icon">🥄</span>
+                                <h3 class="process-title">BASTE</h3>
+                                <p class="process-desc">Flip salmon. Add butter, garlic, and lemon juice to the pan. Sauté 1 min. Constantly baste salmon with the sauce until cooked through.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ingredients -->
+                    <section class="ingredients-section">
+                        <h2 class="section-title">🥬 Ingredients</h2>
+                        <div class="ingredients-grid">
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🐟</div>
+                                <div class="ingredient-name">Salmon Fillet</div>
+                                <div class="ingredient-amount">170g</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🧈</div>
+                                <div class="ingredient-name">Butter</div>
+                                <div class="ingredient-amount">14g</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🧄</div>
+                                <div class="ingredient-name">Garlic</div>
+                                <div class="ingredient-amount">10g</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🍋</div>
+                                <div class="ingredient-name">Lemon Juice</div>
+                                <div class="ingredient-amount">15g</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🫒</div>
+                                <div class="ingredient-name">Olive Oil</div>
+                                <div class="ingredient-amount">13g</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🌿</div>
+                                <div class="ingredient-name">Asparagus</div>
+                                <div class="ingredient-amount">1 bunch</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🍅</div>
+                                <div class="ingredient-name">Cherry Tomatoes</div>
+                                <div class="ingredient-amount">1 cup</div>
+                            </div>
+                            <div class="ingredient-item">
+                                <div class="ingredient-img">🧂</div>
+                                <div class="ingredient-name">Salt & Pepper</div>
+                                <div class="ingredient-amount">to taste</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Detailed Instructions -->
+                    <section class="instructions-section">
+                        <h2 class="section-title">📋 Step-by-Step Instructions</h2>
+                        
+                        <div class="instruction-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Prepare the Salmon</h3>
+                                <p>Remove salmon from refrigerator 15 minutes before cooking to bring to room temperature. Pat completely dry with paper towels—this is crucial for a crispy sear. Season both sides generously with sea salt and freshly ground black pepper. Mince 3 cloves of garlic and set aside with lemon juice measured and ready.</p>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Sear to Perfection</h3>
+                                <p>Heat olive oil in a large skillet over medium-high heat until shimmering. Carefully place salmon fillets skin-side up (presentation side down). Press gently with spatula for 10 seconds to ensure even contact. Cook undisturbed for 4 minutes until a golden crust forms. The salmon should release easily from the pan when ready.</p>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Create the Magic Sauce</h3>
+                                <p>Flip salmon to skin-side down. Immediately add butter to the pan, letting it melt and foam. Add minced garlic and sauté for 30 seconds until fragrant. Pour in fresh lemon juice, scraping up any browned bits. Tilt pan and spoon the bubbling sauce over salmon continuously for 1-2 minutes while salmon finishes cooking.</p>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Rest and Serve</h3>
+                                <p>Transfer salmon to plates and spoon the remaining lemon-garlic butter sauce over the top. Let rest for 2 minutes to allow juices to redistribute. Serve alongside roasted asparagus and blistered cherry tomatoes. Garnish with fresh parsley and lemon wedges.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Chef's Tips -->
+                    <div class="tips-section">
+                        <div class="tips-title">👨‍🍳 Chef's Secrets</div>
+                        <ul class="tips-list">
+                            <li>Don't move the salmon during the first 4 minutes—this develops the crust</li>
+                            <li>Use a fish spatula for easy flipping without breaking the fillet</li>
+                            <li>Baste constantly in the final minute for maximum flavor infusion</li>
+                            <li>Internal temp should reach 145°F (63°C) for perfectly cooked salmon</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="macro-card">
+                        <h3 class="macro-title">📊 Macro Profile</h3>
+                        
+                        <div class="calorie-highlight">
+                            <div class="calorie-number">410</div>
+                            <div class="calorie-label">kcal per serving</div>
+                        </div>
+
+                        <div class="macro-item">
+                            <div class="flex">
+                                <span>🥩 Protein</span> 
+                            </div>
+                            <div class="text  font-bold">34g</div>
+                            <div class="macro-bar">
+                                <div class="macro-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="macro-item">
+                            <div class="macro-label">
+                                <span>🍞</span> Carbs
+                            </div>
+                            <div class="macro-value">2g</div>
+                            <div class="macro-bar">
+                                <div class="macro-fill" style="width: 5%"></div>
+                            </div>
+                        </div>
+
+                        <div class="macro-item">
+                            <div class="macro-label">
+                                <span>🥑</span> Fat
+                            </div>
+                            <div class="macro-value">28g</div>
+                            <div class="macro-bar">
+                                <div class="macro-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn-primary">Start Cooking</button>
+                            <button class="btn-secondary">♥</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
