@@ -25,7 +25,7 @@ export default function Mine( ){
                    setCount(count+1);
                }
                setListe(data.recipes);
-               console.log(liste_recipe)
+               console.log(liste_recipe, "liste_recipe1");
            }
            catch (err){
                if (err instanceof Error) {
