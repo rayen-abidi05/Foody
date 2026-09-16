@@ -2,22 +2,22 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*',
+        source: "/api/:path*",
+        destination: "https://foody-dlm7.onrender.com/api/:path*",
       },
     ];
   },
+
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '5000',
-        pathname: '/uploads/**',
+        protocol: "https",
+        hostname: "foody-dlm7.onrender.com",
+        pathname: "/uploads/**",
       },
     ],
     dangerouslyAllowSVG: true,
-    unoptimized: true, 
+    unoptimized: true,
   },
 };
 

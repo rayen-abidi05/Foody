@@ -8,7 +8,7 @@ import {useEffect,useState} from "react"
 export default function Recipe() {
   const params = useParams();
   const id = params.id;
-  const [recipef, setRecipe] = useState(null);
+  const [recipef, setRecipe] = useState<any>(null);
 
   const fetching = async () => {
     try {
@@ -134,7 +134,7 @@ export default function Recipe() {
                 <h1 className="text-3xl mb-4">⚡ The Process</h1>
 
                 <div className="flex justify-between gap-4 w-full max-[1063px]:flex-col max-[1063px]:w-full">
-                  {recipef.preparation_method.split("/").slice(0, 3).map((step, index) => (
+                  {recipef.preparation_method.split("/").slice(0, 3).map((step: string, index: number) => (
                     <div
                       key={index}
                       className="flex w-[230px] max-[1063px]:w-full flex-col p-6 bg-[#FAF8F5] rounded-2xl border-amber-200 border-1 hover:scale-104 duration-500 hover:border-amber-400 hover:shadow-lg cursor-pointer"
@@ -150,7 +150,7 @@ export default function Recipe() {
                 <div className="w-full mt-10 bg-[#FAF8F5] rounded-2xl p-6 shadow-lg">
                   <h1 className="text-4xl">🥬 Ingredients</h1>
                   <div className="flex flex-wrap gap-10 p-7 w-full justify-between items-center">
-                    {recipef.list_ingredient?.map((item, index) => (
+                    {recipef.list_ingredient?.map((item: any, index: number) => (
                       <div key={index} className="flex flex-col justify-center items-center">
                         <h1 className="flex justify-center items-center w-16 h-16 bg-white rounded-full text-[3rem] pb-3 shadow-[0px_0px_20px_rgba(0,0,0,0.2)]">
                           {item.emoji}

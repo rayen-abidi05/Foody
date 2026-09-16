@@ -116,7 +116,7 @@ function Edit() {
   };
 
   const addIngredient = () => {
-    setIngredients([...ingredients, { name: "", quantity: "", unit: "" }]);
+    setIngredients([...ingredients, { name: "", quantity: 0, unit: "" }]);
   };
 
   const updateIngredient = (index: number, field: string, value: string) => {

@@ -91,16 +91,16 @@ function Content() {
     
         const handleLocalDelete = (title: string) => {
             console.log("removing from list:", title);
-            setListe(prev => prev.filter((item) => item.title !== title));
+            setListe(prev => prev.filter((item: any) => item.title !== title));
         }
         if(liste_recipe1){
             
         }
         const count_a = liste_recipe1.length;
-        const count_h = liste_recipe1.filter((item) => item.category.toLowerCase() === 'healthy').length;
-        const count_n = liste_recipe1.filter((item) => item.category.toLowerCase() === 'normal').length;
+        const count_h = liste_recipe1.filter((item: any) => item.category.toLowerCase() === 'healthy').length;
+        const count_n = liste_recipe1.filter((item: any) => item.category.toLowerCase() === 'normal').length;
 
-        const filtered_recipes = liste_recipe.filter((item) =>
+        const filtered_recipes = liste_recipe.filter((item: any) =>
             item.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
@@ -166,7 +166,7 @@ function Content() {
                     </div>
                    
                 <div className="grid grid-cols-3 gap-5 ">
-                    {filtered_recipes?.length > 0 && filtered_recipes.map((item, index) => (
+                    {filtered_recipes?.length > 0 && filtered_recipes.map((item: any, index: number) => (
                         <Card
                             key={item.title}
                             title={item.title}

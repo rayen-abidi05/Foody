@@ -38,14 +38,17 @@ export default function Mine( ){
        }
            
            useEffect(() => {
-               fetching(category);
+            if (category) {
+                setCategory(category);
+            }
+               
            }, [category]);
        
            const count_a = liste_recipe1.length;
-           const count_h = liste_recipe1.filter((item) => item.category.toLowerCase() === 'healthy').length;
-           const count_n = liste_recipe1.filter((item) => item.category.toLowerCase() === 'normal').length;
+           const count_h = liste_recipe1.filter((item: any) => item.category.toLowerCase() === 'healthy').length;
+           const count_n = liste_recipe1.filter((item: any) => item.category.toLowerCase() === 'normal').length;
 
-           const filtered_recipes = liste_recipe.filter((item) =>
+           const filtered_recipes = liste_recipe.filter((item: any) =>
                item.title.toLowerCase().includes(searchQuery.toLowerCase())
            );
     
@@ -101,7 +104,7 @@ export default function Mine( ){
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-5">
-                    {filtered_recipes?.length > 0 && filtered_recipes.map((item, index) => (
+                    {filtered_recipes?.length > 0 && filtered_recipes.map((item: any, index: number) => (
                         <Card
                             key={item.title}
                             title={item.title}
@@ -112,6 +115,9 @@ export default function Mine( ){
                             imageurl={item.imageurl}
                             categorie={item.category}
                             nogestion = {true}
+                            onDelete={() => {
+                                setListe(prev => prev.filter((recipe: any) => recipe.title !== item.title));
+                            }}
                         />
                     ))}
                 </div>

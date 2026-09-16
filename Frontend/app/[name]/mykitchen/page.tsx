@@ -133,14 +133,14 @@ export default function Mine(){
 
     const handleLocalDelete = (title: string) => {
         console.log("removing from list:", title);
-        setListe(prev => prev.filter((item) => item.title !== title));
+        setListe(prev => prev.filter((item : any) => item.title !== title));
     }
 
     const count_a = liste_recipe.length;
-    const count_h = liste_recipe.filter((item) => item.category.toLowerCase() === 'healthy').length;
-    const count_n = liste_recipe.filter((item) => item.category.toLowerCase() === 'normal').length;
+    const count_h = liste_recipe.filter((item: any) => item.category.toLowerCase() === 'healthy').length;
+    const count_n = liste_recipe.filter((item: any) => item.category.toLowerCase() === 'normal').length;
 
-    const filtered_recipes = liste_recipe.filter((item) =>
+    const filtered_recipes = liste_recipe.filter((item: any) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     
@@ -202,7 +202,7 @@ export default function Mine(){
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-5">
-                    {filtered_recipes?.length > 0 && filtered_recipes.map((item, index) => (
+                    {filtered_recipes?.length > 0 && filtered_recipes.map((item: any, index: number) => (
                         <Card
                             key={item.title}
                             title={item.title}
