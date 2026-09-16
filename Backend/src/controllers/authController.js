@@ -7,7 +7,7 @@ const { SignJWT } = require("jose");
 const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 const refresh_secret = new TextEncoder().encode(process.env.REFRESH_JWT_SECRET);
 
-
+const isProduction = process.env.NODE_ENV === "production";
 const register = async (req,res) =>{
    
     try{
@@ -31,16 +31,14 @@ const register = async (req,res) =>{
         .sign(refresh_secret);
         res.cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax',
-        domain: "localhost",
+        secure: isProduction,
+        sameSite: isProduction ? "none" : "lax",
         maxAge: 15 * 60 * 1000,
         });
         res.cookie("refreshToken",refresh_token,{
             httpOnly : true,
-            secure : false,
-            sameSite : 'lax',
-            domain: "localhost",
+            secure : isProduction,
+            sameSite : isProduction ? "none" : "lax",
             maxAge : 7 * 24 * 60 * 60 * 1000,
         });
         res.status(201).json({message:"user est ajouté avec succees",token});
@@ -77,17 +75,16 @@ const login = async (req,res) =>{
         .sign(refresh_secret);
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: 'lax',
-            domain: "localhost",
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
             maxAge: 15 * 60 * 1000,
-            });
-         res.cookie("refreshToken",refresh_token,{
-            httpOnly : true,
-            secure : false,
-            sameSite : 'lax',
-            domain: "localhost",
-            maxAge : 7 * 24 * 60 * 60 * 1000,
+        });
+
+        res.cookie("refreshToken", refresh_token, {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
         res.status(200).json({message :"login avec succees",username : user.username});
         
@@ -101,10 +98,10 @@ const login = async (req,res) =>{
 const logout = async (req,res) =>{
     
     res.clearCookie("token", {
-    domain: "localhost",
+    
   });
     res.clearCookie("refreshToken",{
-       domain: "localhost",
+      
         
     });
     res.status(200).json({message: "logged out"});
