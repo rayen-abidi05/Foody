@@ -44,6 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   if (token) {
     try {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+      console.log(secret)
       await jwtVerify(token, secret)
       islogged = true
     } catch(err) {
