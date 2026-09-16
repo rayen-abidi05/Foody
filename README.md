@@ -141,7 +141,7 @@ foody/
 ├── server/                  # Express.js backend
 │   ├── routes/              # API route handlers
 │   ├── controllers/         # Business logic
-│   ├── models/              # Database models
+│   ├── config/              # Database config
 │   ├── middleware/          # Auth & validation middleware
 │   └── database/            # SQL schema & migrations
 │
