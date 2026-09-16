@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link"
-import Image from "next/image";
+
 import {useState,useEffect} from "react"
 import {getData} from "@/lib/getData"
 import {Card} from '@/app/[name]/mykitchen/page'
@@ -39,7 +38,7 @@ export default function Mine( ){
            
            useEffect(() => {
             if (category) {
-                setCategory(category);
+                fetching(category);
             }
                
            }, [category]);
