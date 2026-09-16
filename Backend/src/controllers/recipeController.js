@@ -48,7 +48,7 @@ const getRecipePublic = async (req, res,cat,state) =>{
 
                 return {
                     ...item,
-                    imageurl: `http://${process.env.BACKEND_URL || "localhost:5000/"}uploads/${clean}`
+                    imageurl: `${process.env.BACKEND_URL}uploads/${clean}`
                 };
                 });
                 res.status(200).json({message :"data selected", recipes})
@@ -62,7 +62,7 @@ const getRecipePublic = async (req, res,cat,state) =>{
 
                 return {
                     ...item,
-                    imageurl: `http://${process.env.BACKEND_URL || "localhost:5000/"}uploads/${clean}`
+                    imageurl: `${process.env.BACKEND_URL}uploads/${clean}`
                 };
                 });
                 res.status(200).json({message :`data selected with ${cat}`, recipes})
@@ -98,7 +98,7 @@ const getRecipe = async (req, res, user, cat,state) =>{
 
                 return {
                     ...item,
-                    imageurl: `${process.env.BACKEND_URL}/uploads/${clean}`
+                    imageurl: `${process.env.BACKEND_URL}uploads/${clean}`
                 };
                 });
                 res.status(200).json({message :"data selected", recipes})
@@ -112,7 +112,7 @@ const getRecipe = async (req, res, user, cat,state) =>{
 
                 return {
                     ...item,
-                    imageurl: `${process.env.BACKEND_URL}/uploads/${clean}`
+                    imageurl: `${process.env.BACKEND_URL}uploads/${clean}`
                 };
                 });
                 res.status(200).json({message :`data selected with ${cat}`, recipes})
@@ -135,7 +135,7 @@ const getRecipebYId = async (req,res,id)=>{
         const clean = recipe[0].image
                     .replace(/\\/g, "/")        
                     .replace(/^uploads\//, "");
-        recipe[0].image = `/${process.env.BACKEND_URL || "localhost:5000/"}uploads/${clean}`
+        recipe[0].image = `${process.env.BACKEND_URL || "localhost:5000/"}uploads/${clean}`
         let total_kcal = 0
         let total_fat = 0
         let total_prot = 0
