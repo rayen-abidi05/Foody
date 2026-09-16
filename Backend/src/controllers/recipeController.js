@@ -112,7 +112,7 @@ const getRecipe = async (req, res, user, cat,state) =>{
 
                 return {
                     ...item,
-                    imageurl: `${process.env.BACKEND_URL}uploads/${clean}`
+                    imageurl: `${process.env.BACKEND_URL}/uploads/${clean}`
                 };
                 });
                 res.status(200).json({message :`data selected with ${cat}`, recipes})
