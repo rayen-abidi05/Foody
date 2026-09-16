@@ -54,7 +54,7 @@ export default function Mine( ){
     return (
         <div className="w-full h-screen flex flex-col pl-40 pr-40 mt-25 gap-5">
             <div className="flex">
-                <h1 className="text-2xl opacity-80">Welcome back 👋</h1>
+                <h1 className="text-2xl opacity-80">Welcome back, Visitor 👋</h1>
             </div>
             <div className="flex justify-between">
                 <h1 className="text-5xl"> <span className="text-[#EF9F27]">{category} Recipes</span></h1>
